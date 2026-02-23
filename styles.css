@@ -1,0 +1,15 @@
+* {
+    color:red;
+}
+
+h1{
+    font-style:italic;
+}
+
+.class {
+    font-size: 20px;
+}
+
+#id {
+    font-weight: bold;
+}

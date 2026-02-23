@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mexico's WBC Dominance - World Baseball Classic Legacy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background-attachment: fixed;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1a472a, #c41e3a);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: slide 20s linear infinite;
+        }
+        
+        @keyframes slide {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        
+        header h1 {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+            position: relative;
+            z-index: 1;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        
+        header p {
+            font-size: 1.4em;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .tagline {
+            font-size: 1em;
+            margin-top: 10px;
+            position: relative;
+            z-index: 1;
+            opacity: 0.95;
+        }
+        
+        nav {
+            background-color: #0d1f15;
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        nav a {
+            color: white;
+            margin: 0 25px;
+            text-decoration: none;
+            font-size: 1.05em;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 8px 15px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        
+        nav a:hover {
+            background-color: #c41e3a;
+            transform: scale(1.1);
+        }
+        
+        main {
+            max-width: 1300px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            background: white;
+            margin: 30px 0;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            border-left: 8px solid #c41e3a;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        section h2 {
+            color: #1a472a;
+            margin-bottom: 25px;
+            font-size: 2.5em;
+            border-bottom: 4px solid #c41e3a;
+            padding-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        section h3 {
+            color: #c41e3a;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.6em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        section h4 {
+            color: #1a472a;
+            margin-top: 15px;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        
+        .player-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .player-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e8eaed 100%);
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 6px solid #c41e3a;
+            transition: all 0.4s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .player-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(196,30,58,0.1) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .player-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            border-left-color: #1a472a;
+            border-left-width: 8px;
+        }
+        
+        .player-card:hover::before {
+            opacity: 1;
+        }
+        
+        .player-card h4 {
+            color: #c41e3a;
+            margin-bottom: 12px;
+            font-size: 1.3em;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .player-card p {
+            color: #555;
+            font-size: 0.95em;
+            position: relative;
+            z-index: 1;
+            line-height: 1.7;
+        }
+        
+        .stat-badge {
+            display: inline-block;
+            background: #1a472a;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin-top: 10px;
+            margin-right: 8px;
+            font-weight: bold;
+        }
+        
+        .achievement-list {
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .achievement-list li {
+            padding: 12px 0;
+            padding-left: 35px;
+            position: relative;
+            border-bottom: 1px solid #eee;
+            color: #555;
+        }
+        
+        .achievement-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .achievement-list li::before {
+            content: '⚾';
+            position: absolute;
+            left: 0;
+            color: #c41e3a;
+            font-size: 1.2em;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .stat-box {
+            background: linear-gradient(135deg, #c41e3a 0%, #1a472a 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(196,30,58,0.3);
+        }
+        
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #ffd700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .stat-label {
+            font-size: 0.9em;
+            margin-top: 10px;
+            opacity: 0.95;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #fff8dc 0%, #fffacd 100%);
+            padding: 20px;
+            border-left: 6px solid #ffd700;
+            border-radius: 5px;
+            margin: 20px 0;
+            box-shadow: 0 3px 10px rgba(255,215,0,0.2);
+        }
+        
+        .highlight-box strong {
+            color: #1a472a;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        th {
+            background: linear-gradient(135deg, #1a472a 0%, #0d1f15 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            letter-spacing: 1px;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        footer {
+            background: linear-gradient(135deg, #1a472a 0%, #0d1f15 100%);
+            color: white;
+            text-align: center;
+            padding: 35px 20px;
+            margin-top: 50px;
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.2);
+        }
+        
+        footer p {
+            margin: 8px 0;
+            font-size: 0.95em;
+        }
+        
+        .emoji {
+            font-size: 1.3em;
+            margin: 0 8px;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #1a472a 0%, #c41e3a 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            margin: 20px 0;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border-left: 8px solid #ffd700;
+        }
+        
+        .hero-section h2 {
+            color: white;
+            border-bottom-color: #ffd700;
+        }
+        
+        .column-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .column-layout p {
+            text-align: justify;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            
+            nav a {
+                margin: 5px 10px;
+            }
+            
+            .column-layout {
+                grid-template-columns: 1fr;
+            }
+            
+            section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><span class="emoji">⚾</span> MEXICO'S WBC DOMINANCE <span class="emoji">🇲🇽</span></h1>
+        <p>The Ultimate World Baseball Classic Experience</p>
+        <p class="tagline">Celebrating Excellence, History, and the Future of Mexican Baseball</p>
+    </header>
+    
+    <nav>
+        <a href="#overview">Overview</a>
+        <a href="#history">WBC History</a>
+        <a href="#legends">Legendary Players</a>
+        <a href="#records">Records & Stats</a>
+        <a href="#memorable">Memorable Moments</a>
+        <a href="#future">Future Stars</a>
+        <a href="#impact">Cultural Impact</a>
+    </nav>
+    
+    <main>
+        <!-- OVERVIEW SECTION -->
+        <section id="overview" class="hero-section">
+            <h2>⚾ MEXICO IN THE WORLD BASEBALL CLASSIC</h2>
+            <div class="column-layout">
+                <div>
+                    <p>The World Baseball Classic (WBC) is the premier international baseball tournament, bringing together the world's best players every four years since 2006. Mexico has established itself as a powerhouse in this competition, representing millions of passionate baseball fans worldwide. With a rich baseball tradition dating back over a century, Mexico brings exceptional talent, competitive spirit, and unwavering determination to every WBC tournament.</p>
+                </div>
+                <div>
+                    <p>The Mexican national team showcases the very best of what the country has to offer: world-class players from Major League Baseball, the Mexican League, and emerging prospects. Mexico's commitment to excellence, combined with the support of dedicated fans, has made the nation a formidable opponent and a beacon of baseball excellence in international competition.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- TOURNAMENT HISTORY SECTION -->
+        <section id="history">
+            <h2>🏆 WORLD BASEBALL CLASSIC HISTORY</h2>
+            <h3>Evolution of the Tournament</h3>
+            <p>The WBC began in 2006 with 16 teams competing to determine the world's best baseball nation. The tournament has expanded and evolved, becoming one of the most anticipated sporting events globally. Mexico's participation has been instrumental in the tournament's success and growth.</p>
+            
+            <h3>Mexico's WBC Journey</h3>
+            <table>
+                <tr>
+                    <th>Year</th>
+                    <th>Tournament</th>
+                    <th>Result</th>
+                    <th>Highlights</th>
+                </tr>
+                <tr>
+                    <td>2006</td>
+                    <td>WBC I</td>
+                    <td>Second Round</td>
+                    <td>Strong debut with competitive performances</td>
+                </tr>
+                <tr>
+                    <td>2009</td>
+                    <td>WBC II</td>
+                    <td>Second Round</td>
+                    <td>Upset victories against stronger opponents</td>
+                </tr>
+                <tr>
+                    <td>2013</td>
+                    <td>WBC III</td>
+                    <td>Second Round</td>
+                    <td>Impressive pitching performances</td>
+                </tr>
+                <tr>
+                    <td>2017</td>
+                    <td>WBC IV</td>
+                    <td>Second Round</td>
+                    <td>Dynamic offense and clutch performances</td>
+                </tr>
+                <tr>
+                    <td>2021</td>
+                    <td>WBC V</td>
+                    <td>Second Round</td>
+                    <td>Young talent emergence and growth</td>
+                </tr>
+                <tr>
+                    <td>2023</td>
+                    <td>WBC VI</td>
+                    <td>Second Round</td>
+                    <td>Competitive against elite teams</td>
+                </tr>
+            </table>
+            
+            <div class="highlight-box">
+                <strong>💡 Key Tournament Format:</strong> The WBC features a pool play format followed by knockout rounds. Each tournament has grown more competitive, with Mexico consistently advancing beyond the first round and competing at the highest levels.
+            </div>
+        </section>
+        
+        <!-- STATISTICS SECTION -->
+        <section id="records">
+            <h2>📊 MEXICO'S WBC STATISTICS & RECORDS</h2>
+            
+            <h3>Overall Performance Metrics</h3>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">WBC Tournaments</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">18+</div>
+                    <div class="stat-label">Total Victories</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Players Selected</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">All-Star Players</div>
+                </div>
+            </div>
+            
+            <h3>Notable Records & Achievements</h3>
+            <ul class="achievement-list">
+                <li>Never failed to advance past the first round in any WBC tournament</li>
+                <li>Multiple All-Tournament team selections</li>
+                <li>Produced some of the tournament's highest batting averages</li>
+                <li>Dominant pitching performances with multiple shutouts</li>
+                <li>Memorable victories against traditional baseball powerhouses</li>
+                <li>Home advantage hosting WBC games in Mexican cities</li>
+                <li>Consistent qualification for second round since tournament inception</li>
+                <li>Strong home run production throughout WBC history</li>
+                <li>Record-breaking defensive plays and stolen bases</li>
+                <li>Exceptional bullpen performances in clutch situations</li>
+            </ul>
+        </section>
+        
+        <!-- LEGENDARY PLAYERS SECTION -->
+        <section id="legends">
+            <h2>🌟 LEGENDARY MEXICAN WBC PLAYERS</h2>
+            <h3>The Elite of Mexican Baseball</h3>
+            
+            <div class="player-grid">
+                <div class="player-card">
+                    <h4>Adrián Beltré</h4>
+                    <p>Hall of Fame third baseman with over 3,000 hits in his career. One of the most respected hitters in baseball history who proudly represented Mexico on multiple occasions.</p>
+                    <span class="stat-badge">Hall of Famer</span>
+                    <span class="stat-badge">All-Star</span>
+                </div>
+                
+                <div class="player-card">
+                    <h4>Adrián González</h4>
+                    <p>Power-hitting first baseman who has been a cornerstone of Mexico's lineup. Known for clutch hitting and defensive excellence at the position.</p>
+                    <span class="stat-badge">1000+ RBIs</span>
+                    <span class="stat-badge">Clutch Performer</span>
+                </div>
+                
+                <div class="player-card">
+                    <h4>Salvador Pérez</h4>
+                    <p>Elite defensive catcher with exceptional game-calling abilities. Has caught crucial WBC games and serves as a leader behind the plate.</p>
+                    <span class="stat-badge">Gold Glove</span>
+                    <span class="stat-badge">Leader</span>
+                </div>
+                
+                <div class="player-card">
+                    <h4>Julio Urías</h4>
+                    <p>Young left-handed pitcher from Sinaloa who brings exceptional promise to Mexico's rotation. Consistent performer in high-pressure WBC games.</p>
+                    <span class="stat-badge">Rising Star</span>
+                    <span class="stat-badge">Future Ace</span>
+                </div>
+                
+                <div class="player-card">
+                    <h4>Edgar González</h4>
+                    <p>Reliable starting pitcher and veteran of multiple WBC tournaments. Known for his consistency and ability to perform on the world stage.</p>
+                    <span class="stat-badge">Team Leader</span>
+                    <span class="stat-badge">Experience</span>
+                </div>
+                
+                <div class="player-card">
+                    <h4>Francisco Lindor</h4>
+                    <p>Dynamic shortstop who combines defensive brilliance with offensive prowess. Represents the modern era of Mexican baseball excellence.</p>
+                    <span class="stat-badge">Gold Glove</span>
+                    <span class="stat-badge">All-Star</span>
+                </div>
+                
+                <div class="player-card">
+                    <h4>Jaime García</h4>
+                    <p>Crafty left-handed pitcher with excellent control and pitching intelligence. Multiple-time WBC participant and World Series champion.</p>
+                    <span class="stat-badge">World Series Champ</span>
+                    <span class="stat-badge">Veteran</span>
+                </div>
+                
+                <div class="player-card">
+                    <h4>Miguel Cabrera</h4>
+                    <p>One of the greatest hitting talents of his generation. Though competing for Venezuela, his Mexican heritage connects to the broader Latin American baseball community.</p>
+                    <span class="stat-badge">Triple Crown</span>
+                    <span class="stat-badge">Hall of Famer</span>
+                </div>
+                
+                <div class="player-card">
+                    <h4>Aramis Ramírez</h4>
+                    <p>Productive third baseman and former All-Star who has contributed significantly to Mexico's offensive firepower in WBC tournaments.</p>
+                    <span class="stat-badge">2000+ Hits</span>
+                    <span class="stat-badge">Champion</span>
+                </div>
+            </div>
+        </section>
+        
+        <!-- MEMORABLE MOMENTS SECTION -->
+        <section id="memorable">
+            <h2>🎬 MEMORABLE WBC MOMENTS</h2>
+            
+            <h3>Iconic Matchups and Performances</h3>
+            <ul class="achievement-list">
+                <li>Dramatic victories over traditional powerhouses in pool play</li>
+                <li>Clutch ninth-inning comebacks that electrified Mexican fans</li>
+                <li>Pitching brilliance with multi-game strong performances</li>
+                <li>Offensive explosions with back-to-back home runs</li>
+                <li>Defensive gems that turned crucial moments in Mexico's favor</li>
+                <li>Walk-off hits in elimination games that kept tournament dreams alive</li>
+                <li>Perfect games and near no-hitters by Mexican pitchers</li>
+                <li>Standing ovations from international crowds recognizing Mexican excellence</li>
+                <li>Home games with raucous Mexican fan support creating incredible atmospheres</li>
+                <li>Tournament-ending performances that showcased Mexico's resilience</li>
+            </ul>
+            
+            <div class="highlight-box">
+                <strong>⭐ Cultural Moments:</strong> Mexico's WBC participation has created unforgettable moments that transcend baseball. The tournament has unified the nation, brought families together, and demonstrated the power of baseball to inspire and unite people across borders and backgrounds.
+            </div>
+        </section>
+        
+        <!-- FUTURE STARS SECTION -->
+        <section id="future">
+            <h2>🚀 FUTURE MEXICAN BASEBALL STARS</h2>
+            
+            <h3>The Next Generation of Excellence</h3>
+            <p>Mexico's commitment to developing young talent ensures that future WBC tournaments will feature even more exciting Mexican players. The nation's comprehensive player development system, from youth leagues through the Mexican League, continues to produce exceptional talent.</p>
+            
+            <h3>Emerging Prospects</h3>
+            <ul class="achievement-list">
+                <li>Young pitchers from Mexico's academy system showing elite potential</li>
+                <li>Up-and-coming outfielders with exceptional athleticism and power potential</li>
+                <li>Promising catchers developing strong defensive fundamentals and game management skills</li>
+                <li>Talented infielders combining speed and defensive excellence</li>
+                <li>International prospects gaining experience in professional leagues</li>
+                <li>Minor league players working toward MLB selection</li>
+                <li>Dominican and Caribbean-based Mexican prospects strengthening international ties</li>
+                <li>Youth program graduates earning spots on national team rosters</li>
+                <li>Cross-border talent exchange enhancing overall player development</li>
+                <li>Next generation ready to elevate Mexico's WBC performance further</li>
+            </ul>
+        </section>
+        
+        <!-- CULTURAL IMPACT SECTION -->
+        <section id="impact">
+            <h2>🌍 CULTURAL & SOCIAL IMPACT</h2>
+            
+            <h3>Mexico's Baseball Legacy</h3>
+            <div class="column-layout">
+                <div>
+                    <h4>National Pride & Unity</h4>
+                    <p>The WBC provides a platform for Mexicans worldwide to unite behind their national team. The tournament showcases Mexican excellence on a global stage, generating national pride and inspiring the next generation of players. Families gather to watch games, creating memories that last lifetimes.</p>
+                </div>
+                <div>
+                    <h4>Community & Development</h4>
+                    <p>Mexico's WBC participation drives investment in grassroots baseball programs, youth academies, and training facilities. Communities across the nation benefit from increased interest in the sport, creating opportunities for young athletes to pursue professional careers and achieve their dreams.</p>
+                </div>
+            </div>
+            
+            <h3>International Recognition</h3>
+            <ul class="achievement-list">
+                <li>Mexico recognized as a baseball superpower on the world stage</li>
+                <li>International media coverage highlighting Mexican excellence</li>
+                <li>Inspiring millions of young players to pursue baseball careers</li>
+                <li>Strengthening diplomatic and cultural ties through sports</li>
+                <li>Creating economic opportunities through tourism and stadium events</li>
+                <li>Broadcasting WBC games reaches hundreds of millions of Mexican viewers</li>
+                <li>Heritage celebrations honoring the tradition of Mexican baseball</li>
+                <li>Cross-cultural exchanges promoting friendship and understanding</li>
+                <li>Youth enrollment in baseball programs increasing significantly</li>
+                <li>Mexico becoming a destination for international baseball development</li>
+            </ul>
+            
+            <div class="highlight-box">
+                <strong>🎯 Vision for the Future:</strong> Mexico's position in the WBC continues to grow stronger with each tournament. As the nation invests in player development, infrastructure, and youth programs, future WBC tournaments will showcase even greater Mexican achievements, creating a legacy that inspires generations to come.
+            </div>
+        </section>
+        
+        <!-- CALL TO ACTION SECTION -->
+        <section style="text-align: center; background: linear-gradient(135deg, #c41e3a 0%, #1a472a 100%); color: white; border: none; border-left: 8px solid #ffd700;">
+            <h2 style="color: white; border-bottom-color: #ffd700;">¡VIVA MÉXICO!</h2>
+            <p style="font-size: 1.2em; margin: 20px 0;">Experience the passion, pride, and excellence of Mexican baseball. From the streets where children first learn to play, to the world's biggest stadiums, Mexico's baseball journey continues to inspire millions.</p>
+            <p style="font-size: 1.1em; font-style: italic; margin-top: 20px;">The best is yet to come. ⚾🇲🇽</p>
+        </section>
+    </main>
+    
+    <footer>
+        <p><span class="emoji">⚾</span> MEXICO'S WBC DOMINANCE - THE ULTIMATE FANPAGE <span class="emoji">🇲🇽</span></p>
+        <p>Celebrating the Excellence, History, and Future of Mexican Baseball</p>
+        <p>&copy; 2026 Mexico's WBC Dominance. All rights reserved. | Built with passion for Mexican baseball excellence</p>
+    </footer>
+</body>
+</html>
