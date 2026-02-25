@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ricardo's Portfolio - Software Engineer & Marine</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background-attachment: fixed;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: slide 20s linear infinite;
+        }
+        
+        @keyframes slide {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        
+        header h1 {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+        
+        header p {
+            font-size: 1.3em;
+            position: relative;
+            z-index: 1;
+            opacity: 0.95;
+        }
+        
+        nav {
+            background-color: #1a1a2e;
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        nav a {
+            color: white;
+            margin: 0 20px;
+            text-decoration: none;
+            font-size: 1.05em;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 8px 15px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        
+        nav a:hover {
+            background-color: #2a5298;
+            transform: scale(1.08);
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            background: white;
+            margin: 30px 0;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            border-left: 6px solid #2a5298;
+        }
+        
+        section h2 {
+            color: #1e3c72;
+            margin-bottom: 30px;
+            font-size: 2.3em;
+            border-bottom: 3px solid #2a5298;
+            padding-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        section h3 {
+            color: #2a5298;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 1.4em;
+        }
+        
+        .experience-item {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e8eaed 100%);
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 10px;
+            border-left: 5px solid #2a5298;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+        
+        .experience-item:hover {
+            transform: translateX(8px);
+            box-shadow: 0 8px 20px rgba(42, 82, 152, 0.15);
+        }
+        
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .exp-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #1e3c72;
+        }
+        
+        .exp-dates {
+            color: #666;
+            font-style: italic;
+            font-size: 0.95em;
+        }
+        
+        .exp-company {
+            color: #2a5298;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .exp-description {
+            color: #555;
+            line-height: 1.7;
+            margin-top: 10px;
+        }
+        
+        .bullet-list {
+            list-style: none;
+            margin-left: 0;
+            margin-top: 12px;
+        }
+        
+        .bullet-list li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #555;
+        }
+        
+        .bullet-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #2a5298;
+            font-weight: bold;
+        }
+        
+        .education-item {
+            background: linear-gradient(135deg, #f0f7ff 0%, #e8f0ff 100%);
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 10px;
+            border-left: 5px solid #2a5298;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .project-card {
+            background: linear-gradient(135deg, #fff8f0 0%, #fff0e8 100%);
+            padding: 25px;
+            border-radius: 10px;
+            border: 2px solid #2a5298;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(42, 82, 152, 0.1) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(42, 82, 152, 0.2);
+            border-color: #1e3c72;
+        }
+        
+        .project-card h4 {
+            color: #1e3c72;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .project-card p {
+            color: #666;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .tag {
+            background: #2a5298;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+        
+        .skill-category {
+            background: linear-gradient(135deg, #f0f7ff 0%, #e8f0ff 100%);
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #2a5298;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        
+        .skill-category h4 {
+            color: #1e3c72;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .skill-item {
+            background: white;
+            padding: 10px 15px;
+            margin: 8px 0;
+            border-radius: 6px;
+            color: #555;
+            border-left: 3px solid #2a5298;
+            display: flex;
+            align-items: center;
+        }
+        
+        .skill-item::before {
+            content: '✓';
+            color: #2a5298;
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        
+        .gpa-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-top: 15px;
+            box-shadow: 0 4px 12px rgba(42, 82, 152, 0.3);
+        }
+        
+        .link-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            margin-top: 15px;
+            margin-right: 10px;
+            transition: all 0.3s;
+            border: 2px solid #2a5298;
+        }
+        
+        .link-button:hover {
+            background: white;
+            color: #2a5298;
+            transform: scale(1.05);
+        }
+        
+        footer {
+            background: linear-gradient(135deg, #1e3c72 0%, #1a1a2e 100%);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .contact-section {
+            background: linear-gradient(135deg, #e8f0ff 0%, #d0e0ff 100%);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 30px 0;
+            border: 2px solid #2a5298;
+        }
+        
+        .contact-section h3 {
+            color: #1e3c72;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .contact-item {
+            color: #1e3c72;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2em;
+            }
+            
+            nav a {
+                margin: 5px 10px;
+                font-size: 0.95em;
+            }
+            
+            .exp-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .exp-dates {
+                margin-top: 10px;
+            }
+            
+            section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ricardo's Portfolio</h1>
+        <p>Software Engineer | Full Stack Developer | Marine Corps Veteran</p>
+    </header>
+    
+    <nav>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    
+    <main>
+        <!-- ABOUT SECTION -->
+        <section id="about">
+            <h2>👤 About Me</h2>
+            <p style="font-size: 1.1em; line-height: 1.8;">Welcome to my portfolio! I'm a dedicated software engineer with a unique background combining Marine Corps service, customer service excellence, and technical expertise. I'm passionate about building robust applications, solving complex problems, and contributing to meaningful projects. With a strong foundation in computer science and hands-on experience across multiple industries, I bring discipline, attention to detail, and commitment to excellence to every project.</p>
+        </section>
+        
+        <!-- EXPERIENCE SECTION -->
+        <section id="experience">
+            <h2>💼 Professional Experience</h2>
+            
+            <div class="experience-item">
+                <div class="exp-header">
+                    <div>
+                        <div class="exp-title">Pipeline Technician</div>
+                        <div class="exp-company">Pipeline Services</div>
+                    </div>
+                    <div class="exp-dates">2019 - 2020</div>
+                </div>
+                <div class="exp-description">
+                    <p>Managed critical pipeline infrastructure and maintenance operations, ensuring system reliability and safety compliance.</p>
+                    <ul class="bullet-list">
+                        <li>Performed routine maintenance and inspections on pipeline systems</li>
+                        <li>Collaborated with cross-functional teams to optimize operational efficiency</li>
+                        <li>Ensured compliance with industry safety standards and regulations</li>
+                        <li>Troubleshot and resolved technical issues to minimize downtime</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="experience-item">
+                <div class="exp-header">
+                    <div>
+                        <div class="exp-title">Crew Member </div>
+                        <div class="exp-company">Raising Cane's Chicken Fingers</div>
+                    </div>
+                    <div class="exp-dates">2020 - 2021</div>
+                </div>
+                <div class="exp-description">
+                    <p>Excelled in a fast-paced customer service environment.</p>
+                    <ul class="bullet-list">
+                        <li>Delivered exceptional customer service while maintaining high quality standards</li>
+                        <li>Trained and mentored new crew members on company procedures and best practices</li>
+                        <li>Consistently met sales targets and maintained cleanliness standards</li>
+                        <li>Recognized for customer satisfaction scores and employee teamwork</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="experience-item">
+                <div class="exp-header">
+                    <div>
+                        <div class="exp-title">United States Marine Corps</div>
+                        <div class="exp-company">Military Service</div>
+                    </div>
+                    <div class="exp-dates">Active Service (2021 - 2025)</div>
+                </div>
+                <div class="exp-description">
+                    <p>Served with dedication and discipline, developing leadership skills, tactical expertise, and commitment to excellence in a demanding environment.</p>
+                    <ul class="bullet-list">
+                        <li>Demonstrated exceptional leadership and decision-making under pressure</li>
+                        <li>Developed strong work ethic, discipline, and professional standards</li>
+                        <li>Collaborated with diverse teams in high-stakes operational environments</li>
+                        <li>Maintained peak physical and mental readiness</li>
+                        <li>Received training in advanced technical and tactical systems</li>
+                        <li>Embodied core values of honor, courage, and commitment</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- EDUCATION SECTION -->
+        <section id="education">
+            <h2>🎓 Education</h2>
+            
+            <div class="education-item">
+                <h3>Bachelor of Science in Computer Science</h3>
+                <p style="color: #2a5298; font-weight: bold; margin: 10px 0;">University of Texas Rio Grande Valley (UTRGV)</p>
+                <p style="color: #666; margin: 10px 0;"><strong>GPA:</strong> <span class="gpa-badge">3.5+</span></p>
+                
+                <h4 style="color: #1e3c72; margin-top: 20px; margin-bottom: 10px;">Relevant Coursework:</h4>
+                <ul class="bullet-list">
+                    <li>Data Structures and Algorithms</li>
+                    <li>Object-Oriented Programming</li>
+                    <li>Web Development (HTML, CSS, JavaScript)</li>
+                    <li>Database Management Systems</li>
+                    <li>Software Engineering Principles</li>
+                    <li>Computer Networks</li>
+                    <li>Operating Systems</li>
+                    <li>Introduction to Machine Learning</li>
+                    <li>Full Stack Development</li>
+                    <li>Advanced C++ Programming</li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- PROJECTS SECTION -->
+        <section id="projects">
+            <h2>🚀 Projects & Work</h2>
+            
+            <div class="project-grid">
+                <div class="project-card">
+                    <h4>Mexico's WBC Fanpage</h4>
+                    <p>A comprehensive, interactive fanpage celebrating Mexico's World Baseball Classic history and achievements. Features tournament statistics, legendary players, memorable moments, and an interactive trivia quiz game.</p>
+                    <div class="project-tags">
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Interactive</span>
+                    </div>
+                    <a href="page.html" class="link-button">View Project</a>
+                </div>
+                
+                <div class="project-card">
+                    <h4>C++ Projects</h4>
+                    <p>Various C++ programming projects including data structures implementation, algorithm optimization, and system-level programming. Demonstrates proficiency in memory management, OOP principles, and efficient coding practices.</p>
+                    <div class="project-tags">
+                        <span class="tag">C++</span>
+                        <span class="tag">Algorithms</span>
+                        <span class="tag">Data Structures</span>
+                        <span class="tag">OOP</span>
+                    </div>
+                    <a href="https://github.com" class="link-button" target="_blank">GitHub</a>
+                </div>
+                
+                <div class="project-card">
+                    <h4>Full Stack Web Applications</h4>
+                    <p>Experience building responsive, dynamic web applications using modern web technologies. Projects include frontend development, backend API integration, and database management with focus on user experience and performance.</p>
+                    <div class="project-tags">
+                        <span class="tag">Web Dev</span>
+                        <span class="tag">Frontend</span>
+                        <span class="tag">Backend</span>
+                        <span class="tag">Responsive</span>
+                    </div>
+                    <a href="https://github.com" class="link-button" target="_blank">View Repos</a>
+                </div>
+                
+                <div class="project-card">
+                    <h4>This Portfolio Website</h4>
+                    <p>A modern, professional portfolio website showcasing my experience, skills, and projects. Built with semantic HTML, modern CSS styling, and responsive design principles to ensure accessibility across all devices.</p>
+                    <div class="project-tags">
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">Responsive</span>
+                        <span class="tag">Portfolio</span>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <h4>Algorithm Implementations</h4>
+                    <p>Collection of optimized algorithm implementations including sorting algorithms, search techniques, graph algorithms, and dynamic programming solutions with complexity analysis and performance benchmarks.</p>
+                    <div class="project-tags">
+                        <span class="tag">Algorithms</span>
+                        <span class="tag">C++</span>
+                        <span class="tag">Optimization</span>
+                        <span class="tag">Problem Solving</span>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <h4>Open Source Contributions</h4>
+                    <p>Active contributor to open-source projects, collaborating with developers worldwide. Experienced in version control, code review processes, and contributing meaningful improvements to community projects.</p>
+                    <div class="project-tags">
+                        <span class="tag">Git</span>
+                        <span class="tag">GitHub</span>
+                        <span class="tag">Collaboration</span>
+                        <span class="tag">Open Source</span>
+                    </div>
+                    <a href="https://github.com" class="link-button" target="_blank">GitHub Profile</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- SKILLS SECTION -->
+        <section id="skills">
+            <h2>🛠️ Technical Skills</h2>
+            
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Programming Languages</h4>
+                    <div class="skill-item">C++</div>
+                    <div class="skill-item">Python</div>
+                    <div class="skill-item">JavaScript</div>
+                    <div class="skill-item">Java</div>
+                    <div class="skill-item">SQL</div>
+                </div>
+                
+                <div class="skill-category">
+                    <h4>Web Development</h4>
+                    <div class="skill-item">HTML5</div>
+                    <div class="skill-item">CSS3</div>
+                    <div class="skill-item">Responsive Design</div>
+                    <div class="skill-item">DOM Manipulation</div>
+                    <div class="skill-item">APIs & REST</div>
+                </div>
+                
+                <div class="skill-category">
+                    <h4>Tools & Technologies</h4>
+                    <div class="skill-item">Git & GitHub</div>
+                    <div class="skill-item">Visual Studio Code</div>
+                    <div class="skill-item">Command Line</div>
+                    <div class="skill-item">Version Control</div>
+                    <div class="skill-item">Linux/Unix</div>
+                </div>
+                
+                <div class="skill-category">
+                    <h4>Data & Databases</h4>
+                    <div class="skill-item">MySQL</div>
+                    <div class="skill-item">Data Structures</div>
+                    <div class="skill-item">Database Design</div>
+                    <div class="skill-item">Query Optimization</div>
+                    <div class="skill-item">NoSQL Basics</div>
+                </div>
+                
+                <div class="skill-category">
+                    <h4>Soft Skills</h4>
+                    <div class="skill-item">Team Leadership</div>
+                    <div class="skill-item">Problem Solving</div>
+                    <div class="skill-item">Communication</div>
+                    <div class="skill-item">Project Management</div>
+                    <div class="skill-item">Attention to Detail</div>
+                </div>
+                
+                <div class="skill-category">
+                    <h4>Core Competencies</h4>
+                    <div class="skill-item">System Design</div>
+                    <div class="skill-item">Algorithm Analysis</div>
+                    <div class="skill-item">Code Optimization</div>
+                    <div class="skill-item">Debugging</div>
+                    <div class="skill-item">Technical Documentation</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="contact-section">
+            <h3>📧 Get In Touch</h3>
+            <p style="margin: 15px 0; color: #1e3c72;">I'm always interested in hearing about new opportunities and projects. Feel free to reach out!</p>
+            <div class="contact-info">
+                <div class="contact-item">📧 Email: your.email@example.com</div>
+                <div class="contact-item">💼 LinkedIn: linkedin.com/in/yourprofile</div>
+                <div class="contact-item">🐙 GitHub: github.com/yourprofile</div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2026 Ricardo's Portfolio. All rights reserved.</p>
+        <p style="margin-top: 10px; opacity: 0.8;">Built with HTML, CSS, and JavaScript | Designed with care</p>
+    </footer>
+</body>
+</html>
